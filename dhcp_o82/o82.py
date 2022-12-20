@@ -7,6 +7,7 @@ from enum import IntEnum
 from typing import Tuple, Union
 
 from netaddr import EUI
+from netaddr.core import AddrFormatError
 
 
 class SubOptType(IntEnum):
@@ -106,7 +107,7 @@ class Option82:
     def set_remote_id(self, remote_id: str) -> Option82:
         try:
             self.set_sub_option(2, int(EUI(remote_id)).to_bytes(6, "big"), 0)
-        except ValueError:
+        except AddrFormatError:
             self.set_sub_option(2, remote_id.encode("ascii"), 1)
         return self
 
