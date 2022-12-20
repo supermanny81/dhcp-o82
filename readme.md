@@ -3,6 +3,11 @@ dhcp-o82
 
 Makes humans working with DHCP Option 82/RelayAgentInfo possible.
 
+![tests](https://github.com/supermanny81/dhcp-o82/actions/workflows/test.yaml/badge.svg)
+[![codecov](https://codecov.io/gh/supermanny81/dhcp-o82/branch/main/graph/badge.svg?token=81PI6KOHUA)](https://codecov.io/gh/supermanny81/dhcp-o82)
+[![PyPI version](https://badge.fury.io/py/dhcp-o82.svg)](https://badge.fury.io/py/dhcp-o82)
+-----
+
 DHCP Option 82 is used to pass relay agent information from a client to a DHCP server for address assignment.  Use cases like cable modems, factory floors, and IoT often require assigning addresses based on the information passed in this header over the traditional client MAC based reservations.
 
 This utility will parse the contents of the packet for network admins for troubleshooting and will also generate new lookup keys for their DHCP servers, like Cisco Prime Network Registrar, dhcpd, or on box XE based DHCP.
@@ -67,7 +72,7 @@ Install
 Use `pip` for install:
 
 ```bash
-pip install git+https://gitscm.cisco.com/scm/cz/dhcp_util.git
+pip install dhcp-o82
 ```
 
 If you want to setup a development environment, use `poetry` instead:
@@ -79,7 +84,7 @@ python -m pipx ensurepath
 pipx install poetry
 
 # clone repository
-git clone https://gitscm.cisco.com/scm/cz/dhcp_util.git
+git clone https://github.com/supermanny81/dhcp-o82.git
 
 cd dhcp/
 
