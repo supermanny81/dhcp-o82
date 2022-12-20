@@ -3,6 +3,7 @@ dhcp-o82
 
 Makes humans working with DHCP Option 82/RelayAgentInfo possible.
 
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/supermanny81/dhcp-o82)
 ![tests](https://github.com/supermanny81/dhcp-o82/actions/workflows/test.yaml/badge.svg)
 [![codecov](https://codecov.io/gh/supermanny81/dhcp-o82/branch/main/graph/badge.svg?token=81PI6KOHUA)](https://codecov.io/gh/supermanny81/dhcp-o82)
 [![PyPI version](https://badge.fury.io/py/dhcp-o82.svg)](https://badge.fury.io/py/dhcp-o82)
