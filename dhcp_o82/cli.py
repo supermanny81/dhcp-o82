@@ -1,6 +1,8 @@
-import click
-from dhcp_o82.o82 import Option82
 import re
+
+import click
+
+from dhcp_o82.o82 import Option82
 
 
 @click.group()
@@ -8,7 +10,8 @@ def cli():
     """
     Makes humans working with DHCP Option 82/RelayAgentInfo possible.
 
-    Decodes or encodes sub options in DHCP Option 82 packets for troubleshooting or making lease reservations on a DHCP server.
+    Decodes or encodes sub options in DHCP Option 82 packets for
+    troubleshooting or making lease reservations on a DHCP server.
     """
     pass
 
@@ -37,7 +40,8 @@ def inspect(hex):
     "-c",
     required=False,
     default=None,
-    help="String value of a circuit id use the following format. vlan-module-port example: 548-1-6",
+    help="String value of a circuit id use the following format. "
+    "vlan-module-port example: 548-1-6",
 )
 @click.option(
     "--remote-id",
@@ -53,7 +57,9 @@ def inspect(hex):
     default=None,
     help="A string value to use for subscriber id.",
 )
-@click.option("--to-hex", is_flag=True, required=False, help="Display only hex value.")
+@click.option(
+    "--to-hex", is_flag=True, required=False, help=("Display only hex value.")
+)
 def create(circuit_id: str, remote_id: str, subscriber_id: str, to_hex: bool):
     """Creates lookup key (hex) for the supplied sub options."""
     if any([circuit_id, remote_id, subscriber_id]):
@@ -80,7 +86,10 @@ def create(circuit_id: str, remote_id: str, subscriber_id: str, to_hex: bool):
             click.echo(o82)
     else:
         raise click.UsageError(
-            "At least one option (circuit, remote, or subscriber id) must be passed."
+            (
+                "At least one option (circuit, remote, or subscriber id)"
+                " must be passed."
+            )
         )
 
 

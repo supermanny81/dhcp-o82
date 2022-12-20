@@ -1,9 +1,10 @@
 from __future__ import annotations
+
 import csv
-from enum import IntEnum
 import os
 import re
-from typing import Union, Tuple
+from enum import IntEnum
+from typing import Tuple, Union
 
 from netaddr import EUI
 
@@ -105,7 +106,7 @@ class Option82:
     def set_remote_id(self, remote_id: str) -> Option82:
         try:
             self.set_sub_option(2, int(EUI(remote_id)).to_bytes(6, "big"), 0)
-        except:
+        except ValueError:
             self.set_sub_option(2, remote_id.encode("ascii"), 1)
         return self
 
@@ -169,15 +170,30 @@ class Option82:
             opt_len = len(self.sub_option[key]["value"])
             if key in (1, 2):
                 opt_len += 2
-            out += f"sub-option: {key} ({hex(key)}), name: {SubOptType(key).name}, length: {opt_len} ({hex(opt_len)}){os.linesep}"
+            out += (
+                f"sub-option: {key} ({hex(key)}), "
+                f"name: {SubOptType(key).name}, "
+                f"length: {opt_len} ({hex(opt_len)}){os.linesep}"
+            )
             if key in (1, 2):
-                out += f"  type: {self.sub_option[key]['type']} ({hex(self.sub_option[key]['type'])}), length: {opt_len - 2} ({hex(opt_len - 2)}){os.linesep}"
+                out += (
+                    f"  type: {self.sub_option[key]['type']} "
+                    f"({hex(self.sub_option[key]['type'])}), length: {opt_len - 2} "
+                    f"({hex(opt_len - 2)}){os.linesep}"
+                )
             out += f"  val: {self.sub_option[key]['value'].hex(self.delim)}{os.linesep}"
             if key == 1:
-                if self.get_circuit_id(SubOptFormat.CIRCUIT_ID) != None:
-                    out += f"  vlan-module-port: {self.get_circuit_id(SubOptFormat.CIRCUIT_ID)}{os.linesep}"
-                if self.get_circuit_id(SubOptFormat.STRING) != None:
-                    out += f"  string: {self.get_circuit_id(SubOptFormat.STRING)}{os.linesep}"
+                if self.get_circuit_id(SubOptFormat.CIRCUIT_ID) is not None:
+                    out += (
+                        f"  vlan-module-port: "
+                        f"{self.get_circuit_id(SubOptFormat.CIRCUIT_ID)}"
+                        f"{os.linesep}"
+                    )
+                if self.get_circuit_id(SubOptFormat.STRING) is not None:
+                    out += (
+                        f"  string: "
+                        f"{self.get_circuit_id(SubOptFormat.STRING)}{os.linesep}"
+                    )
             else:
                 if self._sub_opt_to_string(key):
                     out += f"  string: {self._sub_opt_to_string(key)}{os.linesep}"
