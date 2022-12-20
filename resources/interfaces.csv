@@ -1,0 +1,14 @@
+vlan,module,port,remote_id
+548,1,1,svlgold31-ot-sw1
+548,1,4,svlgold31-ot-sw1
+548,1,7,svlgold31-ot-sw1
+548,1,8,svlgold31-ot-sw1
+548,1,2,svlgold31-ot-sw1
+548,1,10,svlgold31-ot-sw1
+548,2,5,svlgold31-ot-sw1
+548,1,6,svlgold31-ot-sw1
+548,1,5,svlgold31-ot-sw1
+548,2,1,svlgold31-ot-sw1
+548,1,17,svlgold31-ot-sw1
+548,1,11,svlgold31-ot-sw1
+548,1,16,svlgold31-ot-sw1
