@@ -1,4 +1,5 @@
 from click.testing import CliRunner
+
 from dhcp_o82 import cli
 
 
