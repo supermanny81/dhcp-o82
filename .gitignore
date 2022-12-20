@@ -145,7 +145,6 @@ cython_debug/
 
 scratch*
 .ipynb_checkpoints
-tests/test_cli.py
 sample.csv
 resources/interfaces-modified.csv
 sample-modified.csv
